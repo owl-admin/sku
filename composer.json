@@ -3,7 +3,6 @@
     "alias": "SKU",
     "description": "SKU 扩展",
     "type": "library",
-    "version": "1.0.0",
     "keywords": ["owl-admin", "extension", "sku"],
     "homepage": "https://github.com/slowlyo/owl-sku",
     "license": "MIT",
