@@ -1,0 +1,33 @@
+{
+    "name": "slowlyo/owl-sku",
+    "alias": "SKU",
+    "description": "SKU 扩展",
+    "type": "library",
+    "version": "1.0.0",
+    "keywords": ["owl-admin", "extension", "sku"],
+    "homepage": "https://github.com/slowlyo/owl-sku",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "slowlyo",
+            "email": "slowlyo_email@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "slowlyo/owl-admin": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Slowlyo\\OwlSku\\": "src/"
+        }
+    },
+    "extra": {
+        "owl-admin": "Slowlyo\\OwlSku\\OwlSkuServiceProvider",
+        "laravel": {
+            "providers": [
+                "Slowlyo\\OwlSku\\OwlSkuServiceProvider"
+            ]
+        }
+    }
+}
