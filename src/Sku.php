@@ -25,7 +25,7 @@ class Sku
      *
      * @return ComboControl
      */
-    public function form(string $name = 'sku', string $label = 'SKU', array $skuColumns = [])
+    public function form(string $name = 'sku', string $label = 'SKU', array $skuColumns = [], $static = false)
     {
         $key       = 'sku_' . $name;
         $serviceId = $key . '_service';
@@ -43,6 +43,7 @@ class Sku
                     ->multiLine()
                     ->addButtonText('添加规格组')
                     ->validateOnChange()
+                    ->hidden($static)
                     ->items([
                         amis()->TextControl('group_name', '规格名称')->required()->set('unique', true),
                         amis()->ComboControl('specs', '规格值')
@@ -54,12 +55,13 @@ class Sku
                                 amis()->TextControl('spec')->set('unique', true)->required(),
                             ]),
                     ]),
-                amis()->Divider()->visibleOn('${groups}'),
+                amis()->Divider()->visibleOn('${groups}')->hidden($static),
                 amis()->VanillaAction()
                     ->level('success')
                     ->label('生成 SKU')
                     ->className('mb-3')
                     ->onEvent(['click' => ['actions' => [['actionType' => 'rebuild', 'componentId' => $serviceId]]]])
+                    ->hidden($static)
                     ->visibleOn('${groups}'),
                 // 通过 service 在后端生成sku结构
                 amis()->Service()->id($serviceId)->showErrorMsg(false)->schemaApi([
@@ -70,6 +72,7 @@ class Sku
                         'groups'      => '${groups}',
                         'sku_name'    => $name,
                         'sku_columns' => $skuColumns,
+                        'static'      => $static,
                     ],
                 ]),
             ]);

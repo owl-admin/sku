@@ -5,6 +5,7 @@ namespace Slowlyo\OwlSku\Http\Controllers;
 use Slowlyo\OwlSku\Sku;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use Slowlyo\OwlAdmin\Renderers\BaseRenderer;
 use Slowlyo\OwlAdmin\Controllers\AdminController;
 
 class OwlSkuController extends AdminController
@@ -59,6 +60,17 @@ class OwlSkuController extends AdminController
                 ->step(1)
                 ->required()
                 ->width(240);
+        }
+
+        if ($request->static) {
+            $columns = array_map(function ($item) {
+                if ($item instanceof BaseRenderer) {
+                    $item->set('static', true);
+                } else {
+                    $item['static'] = true;
+                }
+                return $item;
+            }, $columns);
         }
 
         // 回显数据
