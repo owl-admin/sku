@@ -20,6 +20,10 @@ class OwlSkuController extends AdminController
     {
         $specGroup = $request->input('groups');
 
+        if (is_null($specGroup)) {
+            return $this->response()->success([]);
+        }
+
         admin_abort_if(blank(Arr::flatten($specGroup)), '请填写规格组');
 
         $groupName = Arr::pluck($specGroup, 'group_name');
