@@ -38,7 +38,7 @@ return new class extends Migration {
             $table->comment('商品sku');
             $table->id();
             $table->integer('goods_id')->default(0)->comment('商品id');
-            $table->string('sku_ids')->comment('规格id(逗号分隔,升序)');
+            $table->string('spec_ids')->comment('规格id(逗号分隔,升序)');
             $table->decimal('price')->default(0)->comment('价格');
             $table->decimal('stock')->default(0)->comment('库存');
             $table->text('sku_json')->comment('sku数据');

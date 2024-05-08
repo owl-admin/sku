@@ -226,7 +226,7 @@ class Sku
                 $item = collect($skuItem)->except([
                     'id',
                     'goods_id',
-                    'sku_ids',
+                    'spec_ids',
                     'sku_json',
                     'created_at',
                     'updated_at',

@@ -110,7 +110,7 @@ class GoodsService extends AdminService
                 ];
             })->toArray();
 
-            $_item['sku_ids'] = collect($_item['sku_json'])->pluck('spec.id')->sort()->implode(',');
+            $_item['spec_ids'] = collect($_item['sku_json'])->pluck('spec.id')->sort()->implode(',');
 
             $skuList[] = $_item;
         }

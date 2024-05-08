@@ -44,7 +44,7 @@
 |----------|-----------------|
 | id       |                 |
 | goods_id | 所属商品            |
-| sku_ids  | 规格id(逗号分隔,升序)   |
+| spec_ids | 规格id(逗号分隔,升序)   |
 | price    | 价格              |
 | stock    | 库存              |
 | sku_json | sku 数据, json 格式 |
