@@ -37,8 +37,6 @@ class GoodsService extends AdminService
                 $this->saved($model);
             }
 
-            $data['sku'] = Sku::make()->parse($data['sku']);
-
             $this->saveSku($model, $data['sku']);
 
             DB::commit();
@@ -67,10 +65,14 @@ class GoodsService extends AdminService
 
             admin_abort('保存失败');
         }
+
+        return true;
     }
 
     public function saveSku(Goods $goods, $sku)
     {
+        $sku = Sku::make()->parse($sku);
+
         // 清除原有信息
         $goods->specGroups()->delete();
         $goods->specs()->delete();
